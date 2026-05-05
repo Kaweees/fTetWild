@@ -137,6 +137,16 @@ endif()
 # C++11 threads
 find_package(Threads REQUIRED)
 
+# madmann91/bvh — flat, SIMD-accelerated BVH for closest-point and envelope queries
+if(NOT TARGET bvh)
+    FetchContent_Declare(
+        bvh
+        GIT_REPOSITORY https://github.com/madmann91/bvh.git
+        GIT_TAG        ac41ab88a32d0c247009d8ed456fd2795c1ee023
+    )
+    FetchContent_MakeAvailable(bvh)
+endif()
+
 # Json
 if(NOT TARGET json)
     FetchContent_Declare(

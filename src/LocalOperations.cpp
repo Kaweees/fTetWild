@@ -392,7 +392,7 @@ bool floatTetWild::is_point_out_envelope(const Mesh&        mesh,
 #ifdef NEW_ENVELOPE
     return tree.is_out_sf_envelope_exact(p);
 #else
-    GEO::index_t prev_facet;
+    GEO::index_t prev_facet = GEO::NO_FACET;
     return tree.is_out_sf_envelope(p, mesh.params.eps_2, prev_facet);
 #endif
     //    GEO::vec3 geo_p(p[0], p[1], p[2]);
@@ -409,7 +409,7 @@ bool floatTetWild::is_point_out_boundary_envelope(const Mesh&        mesh,
     if (mesh.is_input_all_inserted)
         return false;
 
-    GEO::index_t prev_facet;
+    GEO::index_t prev_facet = GEO::NO_FACET;
     return tree.is_out_tmp_b_envelope(p, mesh.params.eps_2, prev_facet);
 
     //    GEO::vec3 geo_p(p[0], p[1], p[2]);
@@ -601,7 +601,7 @@ bool floatTetWild::is_out_boundary_envelope(const Mesh&        mesh,
     if (!mesh.tet_vertices[v_id].is_on_cut)
         return false;
 
-    GEO::index_t prev_facet;
+    GEO::index_t prev_facet = GEO::NO_FACET;
     if (tree.is_out_tmp_b_envelope(new_pos, mesh.params.eps_2 / 100, prev_facet))
         return true;
 
@@ -720,7 +720,7 @@ bool floatTetWild::is_out_envelope(Mesh&              mesh,
     if (tree.is_out_sf_envelope_exact(new_pos))
         return true;
 #else
-    GEO::index_t prev_facet;
+    GEO::index_t prev_facet = GEO::NO_FACET;
     if (tree.is_out_sf_envelope(new_pos, mesh.params.eps_2, prev_facet))
         return true;
 #endif

@@ -4,8 +4,7 @@ if(FLOAT_TETWILD_WITH_EXACT_ENVELOPE )
 		Predicates.cpp
 		Predicates.hpp
 
-		mesh_AABB.h
-		mesh_AABB.cpp
+		bvh_distance_queries.h
 
 
 		MshSaver.h
@@ -35,8 +34,7 @@ else()
 			Predicates.cpp
 			Predicates.hpp
 
-			mesh_AABB.h
-			mesh_AABB.cpp
+			bvh_distance_queries.h
 
 
 			MshSaver.h
