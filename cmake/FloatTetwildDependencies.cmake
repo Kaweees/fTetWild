@@ -55,10 +55,10 @@ if(NOT TARGET spdlog::spdlog)
         GIT_REPOSITORY https://github.com/gabime/spdlog
         GIT_TAG        v1.15.3
     )
-    
+
     # Configure spdlog to use external fmt
     set(SPDLOG_FMT_EXTERNAL ON CACHE BOOL "" FORCE)
-    
+
     FetchContent_MakeAvailable(spdlog)
 endif()
 
@@ -67,7 +67,7 @@ if(NOT TARGET igl::core)
     FetchContent_Declare(
         libigl
         GIT_REPOSITORY https://github.com/libigl/libigl.git
-        GIT_TAG        v2.6.0   
+        GIT_TAG        v2.6.0
     )
     set(LIBIGL_BUILD_STATIC ON CACHE BOOL "" FORCE)
     set(LIBIGL_BUILD_SHARED OFF CACHE BOOL "" FORCE)
@@ -145,7 +145,7 @@ if(NOT TARGET json)
         GIT_TAG        0901d33bf6e7dfe6f70fd9d142c8f5c6695c6c5b
     )
     FetchContent_MakeAvailable(json)
-    
+
     # Create interface target if not provided by the library
     if(NOT TARGET json)
         add_library(json INTERFACE)

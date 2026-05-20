@@ -40,23 +40,23 @@ jobs:
           - os: macos-14
             name: macOS-14 ARM64
           - os: macos-latest
-            name: macOS-latest ARM64     
+            name: macOS-latest ARM64
           - os: windows-2022
             name: Windows
-            
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 10
           submodules: "recursive"
-          
+
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         timeout-minutes: 20
         with:
           detached: true
-    
+
       - name: Setup NMake (Windows)
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
@@ -95,7 +95,7 @@ jobs:
 
       - name: Build
         run: cd build; conda run -n test-env cmake --build . --parallel 2
-        
+
       - name: Tests
         run: cd build; ctest --verbose --output-on-failure
 
